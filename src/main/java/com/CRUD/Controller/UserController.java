@@ -4,6 +4,7 @@ import com.CRUD.Entity.User;
 import com.CRUD.Repository.UserRepository;
 import com.CRUD.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +27,17 @@ public class UserController {
     public User createUser(@RequestBody User user){
         return userRepository.save(user);
     }
-
-
+    @PutMapping("users/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("id") Long id) {
+        return userRepository.findById(id)
+                .map(usuario -> {
+                    usuario.setName(user.getName());
+                    usuario.setCpf(user.getCpf());
+                    usuario.setEmail(user.getEmail());
+                    User updated = userRepository.save(usuario);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
+    }
 
 
 
