@@ -2,9 +2,6 @@ package com.CRUD.Controller;
 
 import com.CRUD.Entity.User;
 import com.CRUD.Repository.UserRepository;
-import com.CRUD.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
