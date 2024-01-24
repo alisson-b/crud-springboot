@@ -9,3 +9,4 @@ Técnologias utilizadas:
 - Lombok
 - JPA
 - PostgreSQL
+- Postman
